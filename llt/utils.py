@@ -2,6 +2,7 @@
 import types
 import string
 import random
+import datetime
 
 
 def unicode_truncate(uni, length, encoding='utf-8', triple_dot=True):
@@ -59,3 +60,12 @@ def random_str(length=8):
     """
     chars = string.ascii_lowercase + string.digits
     return ''.join([random.choice(chars) for _ in range(length)])
+
+
+def random_id():
+    """
+    获取随机数字（不保证不重复）
+    :return: 随机数字
+    """
+    now = datetime.datetime.now()
+    return int(now.strftime('%Y%m%d%H%M%S')) * (10 ** 8) + random.randint(1, 99999999)
