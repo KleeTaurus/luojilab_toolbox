@@ -12,6 +12,15 @@ def format_url(params):
     return '&'.join(['%s=%s' % (k, smart_str(params[k])) for k in sorted(params) if params[k]])
 
 
+def encode_dict(params):
+    """
+    将字典对象中的value值转换为utf8编码，去除value值为空的健值对。
+    :param params: 字典对象
+    :return: utf8编码格式的字典对象
+    """
+    return {k: smart_str(params[k]) for k in params if params[k]}
+
+
 def sign_url(params, key_secret, key_name=None, sign_type='md5', upper_case=False):
     """
     计算url参数签名
