@@ -69,3 +69,17 @@ def random_id():
     """
     now = datetime.datetime.now()
     return int(now.strftime('%Y%m%d%H%M%S')) * (10 ** 8) + random.randint(1, 99999999)
+
+
+def sequence_generator(random_length=2):
+    """
+    序列号生成器（理论上单机不重复）
+    :return: 序列号
+    """
+    now = datetime.datetime.now()
+    sequence = int(now.strftime('%Y%m%d%H%M%S%f'))
+
+    if random_length > 0:
+        sequence = sequence * (10 ** random_length) + random.randint(1, 10 ** random_length - 1)
+
+    return sequence
