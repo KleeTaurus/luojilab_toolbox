@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
+import os
 import types
 import string
 import random
 import datetime
+import uuid
+
+import pyqrcode
 
 
 def unicode_truncate(uni, length, encoding='utf-8', triple_dot=True):
@@ -83,3 +87,18 @@ def sequence_generator(random_length=2):
         sequence = sequence * (10 ** random_length) + random.randint(1, 10 ** random_length - 1)
 
     return sequence
+
+
+def generate_qrcode_image(url, scale=1):
+    """
+    生成url对应的QR image
+    :return: image对象
+    """
+
+    image_file = '/tmp/%s.png' % uuid.uuid1().hex
+    qr_code = pyqrcode.create(url)
+    qr_code.png(image_file, scale=scale)
+    image_data = open(image_file, "rb").read()
+    # os.remove(image_file)
+
+    return image_data
