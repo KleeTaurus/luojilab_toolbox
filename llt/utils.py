@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import os
 import types
 import string
 import random
@@ -102,3 +101,8 @@ def generate_qrcode_image(url, scale=1):
     # os.remove(image_file)
 
     return image_data
+
+
+def get_key_by_value(dic, value):
+    dict_reverse = {value: key for key, value in dic}
+    return dict_reverse.get(value)
