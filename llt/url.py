@@ -9,7 +9,7 @@ def format_url(params):
     :param params: 字典对象
     :return: url字符串
     """
-    return '&'.join(['%s=%s' % (k, smart_str(params[k])) for k in sorted(params) if params[k]])
+    return '&'.join(['%s=%s' % (smart_str(k), smart_str(params[k])) for k in sorted(params) if params[k]])
 
 
 def encode_dict(params):
