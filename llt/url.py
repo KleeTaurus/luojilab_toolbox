@@ -5,11 +5,11 @@ from .utils import smart_str
 
 def format_url(params):
     """
-    将字典对象转换为url字符串（采用utf8编码），如果key对象的value为空，转换后的字符串中将忽略该key值。
+    将字典对象转换为url字符串（采用utf8编码)
     :param params: 字典对象
     :return: url字符串
     """
-    return '&'.join(['%s=%s' % (smart_str(k), smart_str(params[k])) for k in sorted(params) if params[k]])
+    return '&'.join(['%s=%s' % (smart_str(k), smart_str(params[k])) for k in sorted(params)])
 
 
 def encode_dict(params):
