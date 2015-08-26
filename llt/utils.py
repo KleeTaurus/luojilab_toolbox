@@ -95,7 +95,7 @@ def generate_qrcode_image(url, scale=1):
     """
 
     image_file = '/tmp/%s.png' % uuid.uuid1().hex
-    qr_code = pyqrcode.create(url)
+    qr_code = pyqrcode.create(url, mode='binary')
     qr_code.png(image_file, scale=scale)
     image_data = open(image_file, "rb").read()
     # os.remove(image_file)

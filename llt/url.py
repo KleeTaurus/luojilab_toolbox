@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from urlparse import urlparse, urlunparse
 import hashlib
 from .utils import smart_str
 
@@ -42,3 +43,13 @@ def sign_url(params, key_secret, key_name=None, sign_type='md5', upper_case=Fals
         raise NotImplementedError('Method %s is not supported' % sign_type)
 
     return digest.upper() if upper_case else digest
+
+
+def append_params_to_url(url, params):
+    """
+    追加参数至目标url中
+    :param url: 目标url
+    :param params: 待追加参数
+    """
+    (scheme, netloc, path, params, fragment) = urlparse(url)
+    pass
