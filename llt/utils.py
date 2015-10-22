@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 import types
 import string
 import random
@@ -98,7 +99,7 @@ def generate_qrcode_image(url, scale=1):
     qr_code = pyqrcode.create(url, mode='binary')
     qr_code.png(image_file, scale=scale)
     image_data = open(image_file, "rb").read()
-    # os.remove(image_file)
+    os.remove(image_file)
 
     return image_data
 
