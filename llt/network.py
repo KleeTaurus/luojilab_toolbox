@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import socket
 
 
 def get_client_ip(request):
@@ -12,3 +13,10 @@ def get_client_ip(request):
         return x_forwarded_for.split(',')[0]
     else:
         return request.META.get('REMOTE_ADDR')
+
+
+def get_server_ip():
+    """
+    获取当前服务器ip地址
+    """
+    return socket.gethostbyname(socket.gethostname())
